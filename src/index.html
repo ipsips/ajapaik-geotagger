@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <title>Ajapaik Geotagger</title>
+    {{stylesheet}}
+    <style>
+      #geotagging-canvas {
+        width: 90vw;
+        height: 70vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="geotagging-canvas"></div>
+    <pre id="output"></pre>
+
+    <script src="ajapaik-geotagger.js"></script>
+    <script>
+      var output = document.getElementById('output')
+
+      new AjapaikGeotagger({
+        canvas: document.getElementById('geotagging-canvas'),
+        onChange: function (state) {
+          output.innerHTML = JSON.stringify(state, null, 2)
+        },
+        /* you may also pass in an already instantiated map */
+        // map: new google.maps.Map
+      })
+    </script>
+  </body>
+</html>
