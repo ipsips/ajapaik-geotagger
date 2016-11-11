@@ -171,7 +171,7 @@ class AjapaikGeotagger {
     window[this.globalInstanceId] = this
 
     /* make sure it works with file:// */
-    const protocol = location.protocol.indexOf('http' > -1) ? location.protocol : 'https:'
+    const protocol = location.protocol.indexOf('http') == 0 ? location.protocol : 'https:'
     const script = document.createElement('script')
 
     script.src = `${protocol}//maps.googleapis.com/maps/api/js?libraries=geometry&key=${gMapsApiKey}&callback=${this.globalInstanceId}.initMap`
