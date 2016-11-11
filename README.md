@@ -4,7 +4,7 @@ Ajapaik Geotagger
 ### Installation
 
 ```
-git clone ...
+git clone https://github.com/ipsips/ajapaik-geotagger.git
 npm install
 
 # launch hot-reloading app in browser
