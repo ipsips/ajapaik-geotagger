@@ -1,4 +1,5 @@
 import fs                 from 'fs'
+import childProcess       from 'child_process'
 import path               from 'path'
 import gulp               from 'gulp'
 import gutil              from 'gulp-util'
@@ -21,8 +22,11 @@ gulp.task('copy', () =>
     .pipe(replace(/\n(\s*){{stylesheet}}/, PRODUCTION ? '\n$1<link rel="stylesheet" type="text/css" href="style.css">' : ''))
     .pipe(gulp.dest('dist'))
 )
-gulp.task('build', ['copy'], build)
-gulp.task('watch', ['copy'], webpackDevServer)
+gulp.task('clean', () =>
+  childProcess.exec('rm -rf '+path.resolve(__dirname, 'dist'))
+)
+gulp.task('build', ['clean', 'copy'], build)
+gulp.task('watch', ['clean', 'copy'], webpackDevServer)
 gulp.task('default', ['watch'])
 
 function build() {
